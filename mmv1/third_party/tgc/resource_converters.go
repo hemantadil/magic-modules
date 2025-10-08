@@ -1,17 +1,3 @@
-{{/* The license inside this block applies to this file
-  Copyright 2024 Google LLC. All Rights Reserved.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License. */ -}}
 // ----------------------------------------------------------------------------
 //
 //     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
@@ -29,6 +15,7 @@ package google
 
 import (
 	"sort"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/cai"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/appengine"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/container"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/compute"
@@ -39,6 +26,7 @@ import (
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/securesourcemanager"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/securitycenterv2"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/storage"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/vmwareengine"
 	"github.com/hashicorp/terraform-provider-google-beta/google-beta/tpgresource"
 )
 
@@ -70,7 +58,7 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_compute_instance":                         {compute.ResourceConverterComputeInstance()},
 		"google_compute_instance_group":                   {compute.ResourceConverterComputeInstanceGroup()},
 		"google_compute_network":                          {compute.ResourceConverterComputeNetwork()},
-		"google_compute_node_template":                    {compute.ResourceConverterComputeNodeTemplate()},		
+		"google_compute_node_template":                    {compute.ResourceConverterComputeNodeTemplate()},
 		"google_compute_route":                            {compute.ResourceConverterComputeRoute()},
 		"google_compute_router":                           {compute.ResourceConverterComputeRouter()},
 		"google_compute_vpn_tunnel":                       {compute.ResourceConverterComputeVpnTunnel()},
@@ -154,13 +142,6 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_monitoring_alert_policy":                  {monitoring.ResourceConverterMonitoringAlertPolicy()},
 		"google_vertex_ai_dataset":                        {vertexai.ResourceConverterVertexAIDataset()},
 		"google_vmwareengine_external_address":            {vmwareengine.ResourceConverterVmwareengineExternalAddress()},
-	{{- range $object := $.IamResources }}
-	{{- if $object.IamClassName }}
-		"{{ $object.TerraformName }}_iam_policy": { {{- $object.IamClassName }}IamPolicy()},
-		"{{ $object.TerraformName }}_iam_binding": { {{- $object.IamClassName }}IamBinding()},
-		"{{ $object.TerraformName }}_iam_member": { {{- $object.IamClassName }}IamMember()},
-	{{- end }}
-	{{- end }}
 		"google_project": {
 			resourcemanager.ResourceConverterProject(),
 			resourcemanager.ResourceConverterProjectBillingInfo(),
@@ -194,6 +175,6 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_logging_metric": {logging.ResourceConverterLoggingMetric()},
 		"google_service_account": {resourcemanager.ResourceConverterServiceAccount()},
 		"google_service_account_key": {resourcemanager.ResourceConverterServiceAccountKey()},
-		
+
 	}
 }

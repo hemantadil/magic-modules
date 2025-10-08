@@ -1,0 +1,18 @@
+[
+  {
+    "name": "//vmwareengine.googleapis.com/projects/{{.Provider.project}}/locations/us-central1-a/privateClouds/acc-pc/externalAddresses/acc-addr",
+    "asset_type": "vmwareengine.googleapis.com/ExternalAddress",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://vmwareengine.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "ExternalAddress",
+      "parent": "//vmwareengine.googleapis.com/projects/{{.Provider.project}}/locations/us-central1-a/privateClouds/acc-pc",
+      "data": {
+        "name": "acc-addr",
+        "internalIp": "192.168.0.10",
+        "description": "Sample external address"
+      }
+    }
+  }
+]
