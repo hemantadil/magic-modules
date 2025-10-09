@@ -15,11 +15,13 @@ package google
 
 import (
 	"sort"
+
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/cai"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/appengine"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/container"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/compute"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/dataproc"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/iam"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/kms"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/logging"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/notebooks"
@@ -151,7 +153,11 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_monitoring_alert_policy":                  {monitoring.ResourceConverterMonitoringAlertPolicy()},
 		"google_notebooks_instance":                       {notebooks.ResourceConverterNotebooksInstance()},
 		"google_vertex_ai_dataset":                        {vertexai.ResourceConverterVertexAIDataset()},
+		"google_vmwareengine_cluster":                     {vmwareengine.ResourceConverterVmwareengineCluster()},
 		"google_vmwareengine_external_address":            {vmwareengine.ResourceConverterVmwareengineExternalAddress()},
+		"google_vmwareengine_network_peering":             {vmwareengine.ResourceConverterVmwareengineNetworkPeering()},
+		"google_vmwareengine_network_policy":              {vmwareengine.ResourceConverterVmwareengineNetworkPolicy()},
+		"google_vmwareengine_private_cloud":               {vmwareengine.ResourceConverterVmwareenginePrivateCloud()},
 		"google_project": {
 			resourcemanager.ResourceConverterProject(),
 			resourcemanager.ResourceConverterProjectBillingInfo(),
@@ -181,10 +187,11 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_project_iam_member": {resourcemanager.ResourceConverterProjectIamMember()},
 		"google_project_iam_custom_role": {resourcemanager.ResourceConverterProjectIAMCustomRole()},
 		"google_organization_iam_custom_role": {resourcemanager.ResourceConverterOrganizationIAMCustomRole()},
+		"google_iam_workload_identity_pool":               {iam.ResourceConverterIamWorkloadIdentityPool()},
+		"google_iam_workload_identity_pool_provider":      {iam.ResourceConverterIamWorkloadIdentityPoolProvider()},
 		"google_vpc_access_connector": {vpcaccess.ResourceConverterVPCAccessConnector()},
 		"google_logging_metric": {logging.ResourceConverterLoggingMetric()},
 		"google_service_account": {resourcemanager.ResourceConverterServiceAccount()},
 		"google_service_account_key": {resourcemanager.ResourceConverterServiceAccountKey()},
-
 	}
 }

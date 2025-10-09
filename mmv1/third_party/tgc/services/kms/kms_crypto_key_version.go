@@ -41,11 +41,22 @@ func GetCloudkmsCryptoKeyVersionCaiObject(d tpgresource.TerraformResourceData, c
 }
 
 func GetCloudkmsCryptoKeyVersionApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
-	obj, err := tpgresource.ConvertStringMap(d.Get("").(map[string]interface{}))
-	if err != nil {
-		return nil, err
+	obj := make(map[string]interface{})
+	if v, ok := d.GetOk("state"); ok {
+		obj["state"] = v.(string)
 	}
-	// The `crypto_key` field is not part of the API object, it's part of the URL.
-	delete(obj, "crypto_key")
+	if v, ok := d.GetOk("external_protection_level_options"); ok {
+		if l := v.([]interface{}); len(l) > 0 && l[0] != nil {
+			opts := l[0].(map[string]interface{})
+			epleo := make(map[string]interface{})
+			if uri, ok := opts["external_key_uri"]; ok && uri != "" {
+				epleo["externalKeyUri"] = uri.(string)
+			}
+			if path, ok := opts["ekm_connection_key_path"]; ok && path != "" {
+				epleo["ekmConnectionKeyPath"] = path.(string)
+			}
+			obj["externalProtectionLevelOptions"] = epleo
+		}
+	}
 	return obj, nil
 }

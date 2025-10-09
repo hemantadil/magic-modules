@@ -39,9 +39,31 @@ func GetComputeImageCaiObject(d tpgresource.TerraformResourceData, config *trans
 }
 
 func GetComputeImageApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
-	obj, err := tpgresource.ConvertStringMap(d.Get("").(map[string]interface{}))
-	if err != nil {
-		return nil, err
+	obj := make(map[string]interface{})
+	if v, ok := d.GetOk("name"); ok {
+		obj["name"] = v.(string)
+	}
+	if v, ok := d.GetOk("description"); ok {
+		obj["description"] = v.(string)
+	}
+	if v, ok := d.GetOk("family"); ok {
+		obj["family"] = v.(string)
+	}
+	if v, ok := d.GetOk("disk_size_gb"); ok {
+		obj["diskSizeGb"] = v.(int64)
+	}
+	if v, ok := d.GetOk("archive_size_bytes"); ok {
+		obj["archiveSizeBytes"] = v.(int64)
+	}
+	if v, ok := d.GetOk("raw_disk"); ok {
+		if l := v.([]interface{}); len(l) > 0 && l[0] != nil {
+			rawDisk := l[0].(map[string]interface{})
+			rd := make(map[string]interface{})
+			if source, ok := rawDisk["source"]; ok {
+				rd["source"] = source.(string)
+			}
+			obj["rawDisk"] = rd
+		}
 	}
 	return obj, nil
 }

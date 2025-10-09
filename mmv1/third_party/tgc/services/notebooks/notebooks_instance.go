@@ -39,12 +39,25 @@ func GetNotebooksInstanceCaiObject(d tpgresource.TerraformResourceData, config *
 }
 
 func GetNotebooksInstanceApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
-	obj, err := tpgresource.ConvertStringMap(d.Get("").(map[string]interface{}))
-	if err != nil {
-		return nil, err
+	obj := make(map[string]interface{})
+	if v, ok := d.GetOk("name"); ok {
+		obj["name"] = v.(string)
 	}
-	// The `project` and `location` fields are not part of the API object, they're part of the URL.
-	delete(obj, "project")
-	delete(obj, "location")
+	if v, ok := d.GetOk("machine_type"); ok {
+		obj["machineType"] = v.(string)
+	}
+	if v, ok := d.GetOk("vm_image"); ok {
+		if l := v.([]interface{}); len(l) > 0 && l[0] != nil {
+			vmImage := l[0].(map[string]interface{})
+			vi := make(map[string]interface{})
+			if project, ok := vmImage["project"]; ok {
+				vi["project"] = project.(string)
+			}
+			if imageFamily, ok := vmImage["image_family"]; ok {
+				vi["imageFamily"] = imageFamily.(string)
+			}
+			obj["vmImage"] = vi
+		}
+	}
 	return obj, nil
 }

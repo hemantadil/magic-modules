@@ -1,0 +1,38 @@
+[
+  {
+    "name": "//vmwareengine.googleapis.com/projects/{{.Provider.project}}/locations/global/networks/pc-nw-{{.RANDOM_SUFFIX}}",
+    "asset_type": "vmwareengine.googleapis.com/Network",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://vmwareengine.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "Network",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "name": "projects/{{.Provider.project}}/locations/global/networks/pc-nw-{{.RANDOM_SUFFIX}}",
+        "type": "STANDARD"
+      }
+    }
+  },
+  {
+    "name": "//vmwareengine.googleapis.com/projects/{{.Provider.project}}/locations/us-central1-a/privateClouds/pc-acc-{{.RANDOM_SUFFIX}}",
+    "asset_type": "vmwareengine.googleapis.com/PrivateCloud",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://vmwareengine.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "PrivateCloud",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "description": "PC description.",
+        "networkConfig": {
+          "managementCidr": "192.168.0.0/24",
+          "vmwareEngineNetwork": "projects/{{.Provider.project}}/locations/global/networks/pc-nw-{{.RANDOM_SUFFIX}}"
+        },
+        "managementCluster": {
+          "clusterId": "management"
+        }
+      }
+    }
+  }
+]

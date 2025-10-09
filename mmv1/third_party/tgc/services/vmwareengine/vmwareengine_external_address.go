@@ -39,9 +39,12 @@ func GetVmwareengineExternalAddressCaiObject(d tpgresource.TerraformResourceData
 }
 
 func GetVmwareengineExternalAddressApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
-	obj, err := tpgresource.ConvertStringMap(d.Get("").(map[string]interface{}))
-	if err != nil {
-		return nil, err
+	obj := make(map[string]interface{})
+	if v, ok := d.GetOk("internal_ip"); ok {
+		obj["internalIp"] = v.(string)
+	}
+	if v, ok := d.GetOk("description"); ok {
+		obj["description"] = v.(string)
 	}
 	return obj, nil
 }
