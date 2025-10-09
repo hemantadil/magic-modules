@@ -19,7 +19,10 @@ import (
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/appengine"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/container"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/compute"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/dataproc"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/kms"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/logging"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/notebooks"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/resourcemanager"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/spanner"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v7/tfplan2cai/converters/google/resources/services/secretmanagerregional"
@@ -55,6 +58,7 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_compute_global_address":                   {compute.ResourceConverterComputeGlobalAddress()},
 		"google_compute_global_forwarding_rule":           {compute.ResourceConverterComputeGlobalForwardingRule()},
 		"google_compute_health_check":                     {compute.ResourceConverterComputeHealthCheck()},
+		"google_compute_image":                            {compute.ResourceConverterComputeImage()},
 		"google_compute_instance":                         {compute.ResourceConverterComputeInstance()},
 		"google_compute_instance_group":                   {compute.ResourceConverterComputeInstanceGroup()},
 		"google_compute_network":                          {compute.ResourceConverterComputeNetwork()},
@@ -121,6 +125,10 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_storage_bucket_iam_binding":               {storage.ResourceConverterStorageBucketIamBinding()},
 		"google_storage_bucket_iam_member":                {storage.ResourceConverterStorageBucketIamMember()},
 		"google_compute_node_group":                       {compute.ResourceConverterComputeNodeGroup()},
+		"google_logging_billing_account_sink":             {logging.ResourceConverterLoggingBillingAccountSink()},
+		"google_logging_folder_sink":                      {logging.ResourceConverterLoggingFolderSink()},
+		"google_logging_organization_sink":                {logging.ResourceConverterLoggingOrganizationSink()},
+		"google_logging_project_sink":                     {logging.ResourceConverterLoggingProjectSink()},
 		"google_logging_folder_bucket_config":             {logging.ResourceConverterLogFolderBucket()},
 		"google_app_engine_standard_app_version":          {appengine.ResourceAppEngineStandardAppVersion()},
 		"google_logging_organization_bucket_config":       {logging.ResourceConverterLogOrganizationBucket()},
@@ -129,6 +137,7 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_cloud_tasks_queue":                        {cloudtasks.ResourceConverterCloudTasksQueue()},
 		"google_pubsub_topic":                             {pubsub.ResourceConverterPubsubTopic()},
 		"google_kms_crypto_key":                           {kms.ResourceConverterKMSCryptoKey()},
+		"google_kms_crypto_key_version":                   {kms.ResourceConverterCloudkmsCryptoKeyVersion()},
 		"google_kms_key_ring":                             {kms.ResourceConverterKMSKeyRing()},
 		"google_filestore_instance":                       {filestore.ResourceConverterFilestoreInstance()},
 		"google_access_context_manager_service_perimeter": {accesscontextmanager.ResourceConverterAccessContextManagerServicePerimeter()},
@@ -140,6 +149,7 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_cloudfunctions_function":                  {cloudfunctions.ResourceConverterCloudFunctionsCloudFunction()},
 		"google_monitoring_notification_channel":          {monitoring.ResourceConverterMonitoringNotificationChannel()},
 		"google_monitoring_alert_policy":                  {monitoring.ResourceConverterMonitoringAlertPolicy()},
+		"google_notebooks_instance":                       {notebooks.ResourceConverterNotebooksInstance()},
 		"google_vertex_ai_dataset":                        {vertexai.ResourceConverterVertexAIDataset()},
 		"google_vmwareengine_external_address":            {vmwareengine.ResourceConverterVmwareengineExternalAddress()},
 		"google_project": {

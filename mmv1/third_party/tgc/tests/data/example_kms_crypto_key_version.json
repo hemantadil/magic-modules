@@ -1,0 +1,45 @@
+[
+  {
+    "name": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/global/keyRings/keyring-example",
+    "asset_type": "cloudkms.googleapis.com/KeyRing",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://cloudkms.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "KeyRing",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "name": "projects/{{.Provider.project}}/locations/global/keyRings/keyring-example"
+      }
+    }
+  },
+  {
+    "name": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/global/keyRings/keyring-example/cryptoKeys/crypto-key-example",
+    "asset_type": "cloudkms.googleapis.com/CryptoKey",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://cloudkms.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "CryptoKey",
+      "parent": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/global/keyRings/keyring-example",
+      "data": {
+        "purpose": "ENCRYPT_DECRYPT",
+        "rotationPeriod": "7776000s"
+      }
+    }
+  },
+  {
+    "name": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/global/keyRings/keyring-example/cryptoKeys/crypto-key-example/cryptoKeyVersions/1",
+    "asset_type": "cloudkms.googleapis.com/CryptoKeyVersion",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://cloudkms.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "CryptoKeyVersion",
+      "parent": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/global/keyRings/keyring-example/cryptoKeys/crypto-key-example",
+      "data": {
+        "name": "projects/{{.Provider.project}}/locations/global/keyRings/keyring-example/cryptoKeys/crypto-key-example/cryptoKeyVersions/1"
+      }
+    }
+  }
+]
