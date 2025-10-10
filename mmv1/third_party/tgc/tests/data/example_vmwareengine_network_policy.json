@@ -1,0 +1,38 @@
+[
+  {
+    "name": "//vmwareengine.googleapis.com/projects/{{.Provider.project}}/locations/global/networks/network-policy-nw-{{.RANDOM_SUFFIX}}",
+    "asset_type": "vmwareengine.googleapis.com/Network",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://vmwareengine.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "Network",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "name": "projects/{{.Provider.project}}/locations/global/networks/network-policy-nw-{{.RANDOM_SUFFIX}}",
+        "type": "STANDARD"
+      }
+    }
+  },
+  {
+    "name": "//vmwareengine.googleapis.com/projects/{{.Provider.project}}/locations/us-central1/networkPolicies/network-policy-np-{{.RANDOM_SUFFIX}}",
+    "asset_type": "vmwareengine.googleapis.com/NetworkPolicy",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://vmwareengine.googleapis.com/$discovery/rest?version=v1",
+      "discovery_name": "NetworkPolicy",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "vmwareEngineNetwork": "projects/{{.Provider.project}}/locations/global/networks/network-policy-nw-{{.RANDOM_SUFFIX}}",
+        "edgeServicesCidr": "192.168.30.0/26",
+        "internetAccess": {
+          "enabled": true
+        },
+        "externalIp": {
+          "enabled": true
+        }
+      }
+    }
+  }
+]

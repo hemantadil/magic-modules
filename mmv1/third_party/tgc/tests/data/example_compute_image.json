@@ -1,0 +1,19 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/{{.Provider.project}}/global/images/example-image",
+    "asset_type": "compute.googleapis.com/Image",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "Image",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "name": "example-image",
+        "rawDisk": {
+          "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "//storage.googleapis.com/project-logging-bucket-{{.RANDOM_SUFFIX}}",
+    "asset_type": "storage.googleapis.com/Bucket",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/storage/v1/rest",
+      "discovery_name": "Bucket",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "location": "US",
+        "name": "project-logging-bucket-{{.RANDOM_SUFFIX}}"
+      }
+    }
+  },
+  {
+    "name": "//logging.googleapis.com/projects/{{.Provider.project}}/sinks/my-project-sink",
+    "asset_type": "logging.googleapis.com/LogSink",
+    "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}",
+    "resource": {
+      "version": "v2",
+      "discovery_document_uri": "https://logging.googleapis.com/$discovery/rest?version=v2",
+      "discovery_name": "LogSink",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/{{.Provider.project}}",
+      "data": {
+        "name": "my-project-sink",
+        "destination": "storage.googleapis.com/project-logging-bucket-{{.RANDOM_SUFFIX}}",
+        "filter": "resource.type = gce_instance AND severity >= WARNING",
+        "uniqueWriterIdentity": true
+      }
+    }
+  }
+]
