@@ -53,9 +53,6 @@ func GetLoggingBillingAccountSinkApiObject(d tpgresource.TerraformResourceData, 
 	if v, ok := d.GetOk("disabled"); ok {
 		obj["disabled"] = v.(bool)
 	}
-	if v, ok := d.GetOk("unique_writer_identity"); ok {
-		obj["uniqueWriterIdentity"] = v.(bool)
-	}
 	if v, ok := d.GetOk("exclusions"); ok {
 		exclusions := v.([]interface{})
 		es := make([]map[string]interface{}, 0, len(exclusions))
