@@ -42,14 +42,14 @@ func GetServiceAccountCaiObject(d tpgresource.TerraformResourceData, config *tra
 func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
 	obj := make(map[string]interface{})
 
-	nameProp, err := expandServiceAccountName(d, config)
+	nameProp, err := expandServiceAccountName(d.Get("account_id"), d, config)
 	if err != nil {
 		return nil, err
 	} else if v, ok := d.GetOkExists("account_id"); !tpgresource.IsEmptyValue(reflect.ValueOf(nameProp)) && (ok || !reflect.DeepEqual(v, nameProp)) {
 		obj["name"] = nameProp
 	}
 
-	emailProp, err := expandServiceAccountEmail(d, config)
+	emailProp, err := expandServiceAccountEmail(d.Get("email"), d, config)
 	if err != nil {
 		return nil, err
 	} else if v, ok := d.GetOkExists("email"); !tpgresource.IsEmptyValue(reflect.ValueOf(emailProp)) && (ok || !reflect.DeepEqual(v, emailProp)) {
@@ -70,7 +70,7 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 		obj["description"] = descriptionProp
 	}
 
-	projectProp, err := expandServiceAccountProject(d, config)
+	projectProp, err := expandServiceAccountProject(d.Get("project"), d, config)
 	if err != nil {
 		return nil, err
 	} else if v, ok := d.GetOkExists("project"); !tpgresource.IsEmptyValue(reflect.ValueOf(projectProp)) && (ok || !reflect.DeepEqual(v, projectProp)) {
@@ -80,7 +80,7 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 	return obj, nil
 }
 
-func expandServiceAccountName(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+func expandServiceAccountName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
 	project, err := tpgresource.GetProject(d, config)
 	if err != nil {
 		return nil, err
@@ -92,7 +92,7 @@ func expandServiceAccountName(d tpgresource.TerraformResourceData, config *trans
 	return nil, nil
 }
 
-func expandServiceAccountEmail(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+func expandServiceAccountEmail(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
 	if email, ok := d.GetOk("email"); ok && email != "" {
 		return email, nil
 	}
@@ -116,6 +116,6 @@ func expandServiceAccountDescription(v interface{}, d tpgresource.TerraformResou
 	return v, nil
 }
 
-func expandServiceAccountProject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+func expandServiceAccountProject(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
 	return tpgresource.GetProject(d, config)
 }
