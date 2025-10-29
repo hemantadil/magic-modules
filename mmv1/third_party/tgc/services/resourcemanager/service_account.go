@@ -80,6 +80,14 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 	return obj, nil
 }
 
+func expandServiceAccountDescription(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+	return v, nil
+}
+
+func expandServiceAccountDisplayName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+	return v, nil
+}
+
 func expandServiceAccountName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
 	project, err := tpgresource.GetProject(d, config)
 	if err != nil {
@@ -106,14 +114,6 @@ func expandServiceAccountEmail(v interface{}, d tpgresource.TerraformResourceDat
 		return fmt.Sprintf("%s@%s.iam.gserviceaccount.com", accountId, project), nil
 	}
 	return nil, nil
-}
-
-func expandServiceAccountDisplayName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
-}
-
-func expandServiceAccountDescription(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
 }
 
 func expandServiceAccountProject(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
