@@ -19,7 +19,7 @@ func ResourceConverterServiceAccount() cai.ResourceConverter {
 }
 
 func GetServiceAccountCaiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) ([]cai.Asset, error) {
-	name, err := cai.AssetName(d, config, "//iam.googleapis.com/projects/{{project}}/serviceAccounts/{{unique_id}}")
+	name, err := cai.AssetName(d, config, "//iam.googleapis.com/projects/{{project}}/serviceAccounts/{{account_id}}@{{project}}.iam.gserviceaccount.com")
 	if err != nil {
 		return []cai.Asset{}, err
 	}
@@ -42,19 +42,14 @@ func GetServiceAccountCaiObject(d tpgresource.TerraformResourceData, config *tra
 func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
 	obj := make(map[string]interface{})
 
-	project, err := tpgresource.GetProject(d, config)
+	nameProp, err := expandServiceAccountName(d, config)
 	if err != nil {
 		return nil, err
+	} else if v, ok := d.GetOkExists("account_id"); !tpgresource.IsEmptyValue(reflect.ValueOf(nameProp)) && (ok || !reflect.DeepEqual(v, nameProp)) {
+		obj["name"] = nameProp
 	}
 
-	descriptionProp, err := expandServiceAccountDescription(d.Get("description"), d, config)
-	if err != nil {
-		return nil, err
-	} else if v, ok := d.GetOkExists("description"); !tpgresource.IsEmptyValue(reflect.ValueOf(descriptionProp)) && (ok || !reflect.DeepEqual(v, descriptionProp)) {
-		obj["description"] = descriptionProp
-	}
-
-	emailProp, err := expandServiceAccountDescription(d.Get("email"), d, config)
+	emailProp, err := expandServiceAccountEmail(d, config)
 	if err != nil {
 		return nil, err
 	} else if v, ok := d.GetOkExists("email"); !tpgresource.IsEmptyValue(reflect.ValueOf(emailProp)) && (ok || !reflect.DeepEqual(v, emailProp)) {
@@ -68,48 +63,52 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 		obj["displayName"] = displayNameProp
 	}
 
-	nameProp, err := expandServiceAccountName(d.Get("name"), d, config)
+	descriptionProp, err := expandServiceAccountDescription(d.Get("description"), d, config)
 	if err != nil {
 		return nil, err
-	} else if v, ok := d.GetOkExists("name"); !tpgresource.IsEmptyValue(reflect.ValueOf(nameProp)) && (ok || !reflect.DeepEqual(v, nameProp)) {
-		obj["name"] = nameProp
+	} else if v, ok := d.GetOkExists("description"); !tpgresource.IsEmptyValue(reflect.ValueOf(descriptionProp)) && (ok || !reflect.DeepEqual(v, descriptionProp)) {
+		obj["description"] = descriptionProp
 	}
 
-	disabledProp, err := expandServiceAccountDisabled(d.Get("disabled"), d, config)
-	if err != nil {
-		return nil, err
-	} else if v, ok := d.GetOkExists("disabled"); !tpgresource.IsEmptyValue(reflect.ValueOf(disabledProp)) && (ok || !reflect.DeepEqual(v, disabledProp)) {
-		obj["disabled"] = disabledProp
-	}
-
-	uniqueIdProp, err := expandServiceAccountUniqueId(d.Get("unique_id"), d, config)
-	if err != nil {
-		return nil, err
-	} else if v, ok := d.GetOkExists("unique_id"); !tpgresource.IsEmptyValue(reflect.ValueOf(uniqueIdProp)) && (ok || !reflect.DeepEqual(v, uniqueIdProp)) {
-		obj["uniqueId"] = uniqueIdProp
-	}
-
-	projectProp, err := expandServiceAccountProject(d.Get("project"), d, config)
+	projectProp, err := expandServiceAccountProject(d, config)
 	if err != nil {
 		return nil, err
 	} else if v, ok := d.GetOkExists("project"); !tpgresource.IsEmptyValue(reflect.ValueOf(projectProp)) && (ok || !reflect.DeepEqual(v, projectProp)) {
 		obj["projectId"] = projectProp
 	}
 
-	accountIdProp, err := expandServiceAccountId(d.Get("account_id"), d, config)
-	if err != nil {
-		return nil, err
-	} else if v, ok := d.GetOkExists("account_id"); !tpgresource.IsEmptyValue(reflect.ValueOf(accountIdProp)) && (ok || !reflect.DeepEqual(v, accountIdProp)) {
-		accountId := accountIdProp
-		if _, ok := obj["email"]; !ok {
-			// Generating email when the service account is being created (email not present)
-			obj["email"] = fmt.Sprintf("%s@%s.iam.gserviceaccount.com", accountId, project)
-		}
-	}
 	return obj, nil
 }
 
-func expandServiceAccountId(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+func expandServiceAccountName(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+	project, err := tpgresource.GetProject(d, config)
+	if err != nil {
+		return nil, err
+	}
+
+	if accountId, ok := d.GetOk("account_id"); ok {
+		return fmt.Sprintf("projects/%s/serviceAccounts/%s@%s.iam.gserviceaccount.com", project, accountId, project), nil
+	}
+	return nil, nil
+}
+
+func expandServiceAccountEmail(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+	if email, ok := d.GetOk("email"); ok && email != "" {
+		return email, nil
+	}
+
+	project, err := tpgresource.GetProject(d, config)
+	if err != nil {
+		return nil, err
+	}
+
+	if accountId, ok := d.GetOk("account_id"); ok {
+		return fmt.Sprintf("%s@%s.iam.gserviceaccount.com", accountId, project), nil
+	}
+	return nil, nil
+}
+
+func expandServiceAccountDisplayName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
 	return v, nil
 }
 
@@ -117,26 +116,6 @@ func expandServiceAccountDescription(v interface{}, d tpgresource.TerraformResou
 	return v, nil
 }
 
-func expandServiceAccountDisplayName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
-}
-
-func expandServiceAccountName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
-}
-
-func expandServiceAccountEmail(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
-}
-
-func expandServiceAccountDisabled(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
-}
-
-func expandServiceAccountUniqueId(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
-}
-
-func expandServiceAccountProject(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return v, nil
+func expandServiceAccountProject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
+	return tpgresource.GetProject(d, config)
 }
