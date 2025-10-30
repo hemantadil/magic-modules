@@ -134,10 +134,7 @@ func expandServiceAccountName(v interface{}, d tpgresource.TerraformResourceData
 }
 
 func expandServiceAccountEmail(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	if email, ok := d.GetOk("email"); ok && email != "" {
-		return email, nil
-	}
-	return nil, nil
+	return v, nil
 }
 
 func expandServiceAccountDisabled(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
