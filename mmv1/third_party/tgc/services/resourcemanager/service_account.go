@@ -146,5 +146,5 @@ func expandServiceAccountUniqueId(v interface{}, d tpgresource.TerraformResource
 }
 
 func expandServiceAccountProject(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	return tpgresource.GetProject(d, config)
+	return v, nil
 }
