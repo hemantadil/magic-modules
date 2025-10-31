@@ -2,9 +2,6 @@ provider "google" {
   project = "{{.Provider.project}}"
 }
 
-data "google_compute_default_service_account" "default" {
-}
-
 resource "google_kms_key_ring" "gg_asset_08944_f101_key_ring" {
   name     = "gg-asset-08944-f101-key-ring"
   location = "us-central1"
@@ -19,7 +16,7 @@ resource "google_kms_crypto_key" "gg_asset_08944_f101_crypto_key" {
 resource "google_kms_crypto_key_iam_member" "gg_asset_08944_f101_iam_binding" {
   crypto_key_id = google_kms_crypto_key.gg_asset_08944_f101_crypto_key.id
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member        = "serviceAccount:${data.google_compute_default_service_account.default.email}"
+  member        = "serviceAccount:service-{{.Project.Number}}@compute-system.iam.gserviceaccount.com"
 }
 
 resource "google_kms_crypto_key_iam_member" "gce_sa_kms_binding" {
