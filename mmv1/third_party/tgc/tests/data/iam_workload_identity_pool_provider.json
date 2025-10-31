@@ -15,7 +15,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50421-6718",
       "version": "v1"
     }
@@ -39,7 +38,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-53029-6165-pool",
       "version": "v1"
     }
@@ -66,7 +64,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-50569-cb71",
       "version": "v1"
     }
@@ -87,7 +84,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50716-eec2",
       "version": "v1"
     }
@@ -109,7 +105,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50882-8747",
       "version": "v1"
     }
@@ -133,7 +128,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-51035-89e8",
       "version": "v1"
     }
@@ -163,7 +157,6 @@
       },
       "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
       "discoveryName": "WorkloadIdentityPoolProvider",
-      "location": "global",
       "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-51207-ce6d",
       "version": "v1"
     }
