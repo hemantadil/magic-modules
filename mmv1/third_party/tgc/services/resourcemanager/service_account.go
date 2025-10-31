@@ -41,7 +41,6 @@ func GetServiceAccountCaiObject(d tpgresource.TerraformResourceData, config *tra
 
 func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) (map[string]interface{}, error) {
 	obj := make(map[string]interface{})
-
 	project, err := tpgresource.GetProject(d, config)
 	if err != nil {
 		return nil, err
@@ -54,7 +53,7 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 		obj["description"] = descriptionProp
 	}
 
-	emailProp, err := expandServiceAccountDescription(d.Get("email"), d, config)
+	emailProp, err := expandServiceAccountEmail(d.Get("email"), d, config)
 	if err != nil {
 		return nil, err
 	} else if v, ok := d.GetOkExists("email"); !tpgresource.IsEmptyValue(reflect.ValueOf(emailProp)) && (ok || !reflect.DeepEqual(v, emailProp)) {
@@ -105,7 +104,11 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 			// Generating email when the service account is being created (email not present)
 			obj["email"] = fmt.Sprintf("%s@%s.iam.gserviceaccount.com", accountId, project)
 		}
+		if _, ok := obj["name"]; !ok {
+			obj["name"] = fmt.Sprintf("projects/%s/serviceAccounts/%s@%s.iam.gserviceaccount.com", project, accountId, project)
+		}
 	}
+
 	return obj, nil
 }
 
