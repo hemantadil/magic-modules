@@ -194,6 +194,7 @@ func ResourceConverters() map[string][]cai.ResourceConverter {
 		"google_logging_metric": {logging.ResourceConverterLoggingMetric()},
 		"google_service_account": {resourcemanager.ResourceConverterServiceAccount()},
 		"google_service_account_key": {resourcemanager.ResourceConverterServiceAccountKey()},
+		"google_iam_workload_identity_pool_provider":      {iambeta.ResourceConverterIAMBetaWorkloadIdentityPoolProvider()},
 		
 	}
 }

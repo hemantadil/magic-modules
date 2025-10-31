@@ -1,0 +1,171 @@
+[
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50421-6718/providers/gg-asset-50421-6718",
+    "resource": {
+      "data": {
+        "aws": {
+          "accountId": "111111111111"
+        },
+        "description": "Workload Identity Pool Provider for gg-asset-50421-6718",
+        "displayName": "gg-asset-50421-6718",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50421-6718/providers/gg-asset-50421-6718",
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50421-6718",
+      "version": "v1"
+    }
+  },
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-53029-6165-pool/providers/gg-asset-53029-6165",
+    "resource": {
+      "data": {
+        "attributeMapping": {
+          "google.subject": "assertion.sub"
+        },
+        "description": "OIDC provider for gg-asset-53029-6165",
+        "displayName": "gg-asset-53029-6165",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-53029-6165-pool/providers/gg-asset-53029-6165",
+        "oidc": {
+          "issuerUri": "https://accounts.google.com"
+        },
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-53029-6165-pool",
+      "version": "v1"
+    }
+  },
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-50569-cb71/providers/gg-asset-provider-50569-cb71",
+    "resource": {
+      "data": {
+        "attributeCondition": "assertion.repository_owner == 'my-owner'",
+        "attributeMapping": {
+          "attribute.aws_role": "assertion.arn",
+          "attribute.repository": "assertion.repository",
+          "google.subject": "assertion.sub"
+        },
+        "aws": {
+          "accountId": "111122223333"
+        },
+        "description": "AWS provider for gg-asset-50569-cb71",
+        "displayName": "gg-asset-provider-50569-cb71",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-50569-cb71/providers/gg-asset-provider-50569-cb71",
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-50569-cb71",
+      "version": "v1"
+    }
+  },
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50716-eec2/providers/gg-asset-50716-eec2",
+    "resource": {
+      "data": {
+        "aws": {
+          "accountId": "111122223333"
+        },
+        "description": "A sample workload identity pool provider.",
+        "displayName": "gg-asset-50716-eec2",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50716-eec2/providers/gg-asset-50716-eec2",
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50716-eec2",
+      "version": "v1"
+    }
+  },
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50882-8747/providers/gg-asset-50882-8747",
+    "resource": {
+      "data": {
+        "aws": {
+          "accountId": "111122223333"
+        },
+        "description": "Workload Identity Pool Provider for gg-asset-50882-8747",
+        "disabled": true,
+        "displayName": "gg-asset-50882-8747",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50882-8747/providers/gg-asset-50882-8747",
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-50882-8747",
+      "version": "v1"
+    }
+  },
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-51035-89e8/providers/gg-asset-51035-89e8",
+    "resource": {
+      "data": {
+        "attributeMapping": {
+          "google.subject": "assertion.sub"
+        },
+        "description": "Workload Identity Pool Provider for gg-asset-51035-89e8",
+        "displayName": "gg-asset-51035-89e8",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-51035-89e8/providers/gg-asset-51035-89e8",
+        "oidc": {
+          "issuerUri": "https://accounts.google.com"
+        },
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-51035-89e8",
+      "version": "v1"
+    }
+  },
+  {
+    "ancestry_path": "{{.Ancestry}}/project/{{.Project.Number}}",
+    "assetType": "iam.googleapis.com/WorkloadIdentityPoolProvider",
+    "name": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-51207-ce6d/providers/gg-asset-provider-51207-ce6d",
+    "resource": {
+      "data": {
+        "attributeMapping": {
+          "attribute.actor": "assertion.actor",
+          "attribute.aud": "assertion.aud",
+          "attribute.repository": "assertion.repository",
+          "google.subject": "assertion.sub"
+        },
+        "description": "OIDC provider for gg-asset-51207-ce6d",
+        "displayName": "gg-asset-provider-51207-ce6d",
+        "name": "projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-51207-ce6d/providers/gg-asset-provider-51207-ce6d",
+        "oidc": {
+          "allowedAudiences": [
+            "gg-asset-51207-ce6d-audience"
+          ],
+          "issuerUri": "https://oidc.gg-asset.com/51207-ce6d"
+        },
+        "state": "ACTIVE"
+      },
+      "discoveryDocumentUri": "https://iam.googleapis.com/$discovery/rest",
+      "discoveryName": "WorkloadIdentityPoolProvider",
+      "location": "global",
+      "parent": "//iam.googleapis.com/projects/{{.Project.Number}}/locations/global/workloadIdentityPools/gg-asset-pool-51207-ce6d",
+      "version": "v1"
+    }
+  }
+]
