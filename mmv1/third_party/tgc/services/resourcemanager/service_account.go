@@ -19,7 +19,7 @@ func ResourceConverterServiceAccount() cai.ResourceConverter {
 }
 
 func GetServiceAccountCaiObject(d tpgresource.TerraformResourceData, config *transport_tpg.Config) ([]cai.Asset, error) {
-	name, err := cai.AssetName(d, config, "//iam.googleapis.com/projects/{{project}}/serviceAccounts/{{account_id}}@{{project}}.iam.gserviceaccount.com")
+	name, err := cai.AssetName(d, config, "//iam.googleapis.com/projects/{{project}}/serviceAccounts/{{unique_id}}")
 	if err != nil {
 		return []cai.Asset{}, err
 	}
@@ -67,10 +67,10 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 		obj["displayName"] = displayNameProp
 	}
 
-	nameProp, err := expandServiceAccountName(d.Get("account_id"), d, config)
+	nameProp, err := expandServiceAccountName(d.Get("name"), d, config)
 	if err != nil {
 		return nil, err
-	} else if v, ok := d.GetOkExists("account_id"); !tpgresource.IsEmptyValue(reflect.ValueOf(nameProp)) && (ok || !reflect.DeepEqual(v, nameProp)) {
+	} else if v, ok := d.GetOkExists("name"); !tpgresource.IsEmptyValue(reflect.ValueOf(nameProp)) && (ok || !reflect.DeepEqual(v, nameProp)) {
 		obj["name"] = nameProp
 	}
 
@@ -122,15 +122,7 @@ func expandServiceAccountDisplayName(v interface{}, d tpgresource.TerraformResou
 }
 
 func expandServiceAccountName(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
-	project, err := tpgresource.GetProject(d, config)
-	if err != nil {
-		return nil, err
-	}
-
-	if accountId, ok := d.GetOk("account_id"); ok {
-		return fmt.Sprintf("projects/%s/serviceAccounts/%s@%s.iam.gserviceaccount.com", project, accountId, project), nil
-	}
-	return nil, nil
+	return v, nil
 }
 
 func expandServiceAccountEmail(v interface{}, d tpgresource.TerraformResourceData, config *transport_tpg.Config) (interface{}, error) {
