@@ -1,27 +1,5 @@
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = ">= 4.54.0"
-    }
-  }
-}
-
-variable "project_id" {
-  description = "The project ID to host the resources."
-  type        = string
-}
-
-variable "organization_id" {
-  description = "The organization ID."
-  type        = string
-}
-
 provider "google" {
-  project = var.project_id
-}
-
-data "google_project" "project" {
+  project = "{{.Provider.project}}"
 }
 
 data "google_compute_default_service_account" "default" {
@@ -47,7 +25,7 @@ resource "google_kms_crypto_key_iam_member" "gg_asset_08944_f101_iam_binding" {
 resource "google_kms_crypto_key_iam_member" "gce_sa_kms_binding" {
   crypto_key_id = google_kms_crypto_key.gg_asset_08944_f101_crypto_key.id
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member        = "serviceAccount:service-${data.google_project.project.number}@compute-system.iam.gserviceaccount.com"
+  member        = "serviceAccount:service-{{.Project.Number}}@compute-system.iam.gserviceaccount.com"
 }
 
 resource "google_compute_disk" "gg_asset_08944_f101_disk" {
