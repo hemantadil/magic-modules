@@ -61,7 +61,7 @@
         "ancestry_path": "{{.Ancestry}}/project/{{.Provider.project}}"
     },
     {
-        "name": "//iam.googleapis.com/projects/{{.Provider.project}}/serviceAccounts/placeholder-QJgu5Gv8",
+        "name": "//iam.googleapis.com/projects/{{.Provider.project}}/serviceAccounts/service-account-cc@{{.Provider.project}}.iam.gserviceaccount.com",
         "asset_type": "iam.googleapis.com/ServiceAccount",
         "resource": {
             "version": "v1",
@@ -71,6 +71,7 @@
             "data": {
                 "displayName": "Service Account",
                 "email": "service-account-cc@{{.Provider.project}}.iam.gserviceaccount.com",
+                "name": "projects/{{.Provider.project}}/serviceAccounts/service-account-cc@{{.Provider.project}}.iam.gserviceaccount.com",
                 "projectId": "{{.Provider.project}}"
             }
         },
