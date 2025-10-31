@@ -1,0 +1,60 @@
+{
+"ancestors": [
+"projects/{{.Project.Number}}",
+"organizations/{{.OrgID}}"
+],
+"assetType": "compute.googleapis.com/Image",
+"name": "//compute.googleapis.com/projects/{{.Provider.project}}/global/images/gg-asset-08944-f101-image",
+"resource": {
+"data": {
+"architecture": "X86_64",
+"archiveSizeBytes": "744988672",
+"creationTimestamp": "2025-10-31T04:13:03.281-07:00",
+"diskSizeGb": "10",
+"enableConfidentialCompute": false,
+"guestOsFeatures": [
+{
+"type": "MULTI_IP_SUBNET"
+},
+{
+"type": "UEFI_COMPATIBLE"
+},
+{
+"type": "VIRTIO_SCSI_MULTIQUEUE"
+},
+{
+"type": "GVNIC"
+}
+],
+"id": "9146438996592240465",
+"imageEncryptionKey": {
+"kmsKeyName": "projects/{{.Provider.project}}/locations/us-central1/keyRings/gg-asset-08944-f101-key-ring/cryptoKeys/gg-asset-08944-f101-crypto-key/cryptoKeyVersions/1"
+},
+"labelFingerprint": "vezUS+42LLM=",
+"labels": {
+"goog-terraform-provisioned": "true"
+},
+"licenseCodes": [
+"3853522013536123851"
+],
+"licenses": [
+"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-11-bullseye"
+],
+"name": "gg-asset-08944-f101-image",
+"selfLink": "https://www.googleapis.com/compute/v1/projects/{{.Provider.project}}/global/images/gg-asset-08944-f101-image",
+"sourceSnapshot": "https://www.googleapis.com/compute/v1/projects/{{.Provider.project}}/global/snapshots/gg-asset-08944-f101-snapshot",
+"sourceSnapshotId": "2957094254916741003",
+"sourceType": "RAW",
+"status": "READY",
+"storageLocations": [
+"us"
+]
+},
+"discoveryDocumentUri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+"discoveryName": "Image",
+"location": "us",
+"parent": "//cloudresourcemanager.googleapis.com/projects/{{.Project.Number}}",
+"version": "v1"
+},
+"updateTime": "2025-10-31T11:14:42.789101Z"
+}
