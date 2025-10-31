@@ -104,6 +104,9 @@ func GetServiceAccountApiObject(d tpgresource.TerraformResourceData, config *tra
 			// Generating email when the service account is being created (email not present)
 			obj["email"] = fmt.Sprintf("%s@%s.iam.gserviceaccount.com", accountId, project)
 		}
+		if _, ok := obj["name"]; !ok {
+			obj["name"] = fmt.Sprintf("projects/%s/serviceAccounts/%s@%s.iam.gserviceaccount.com", project, accountId, project)
+		}
 	}
 
 	return obj, nil
