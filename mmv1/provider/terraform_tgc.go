@@ -399,6 +399,7 @@ func (tgc TerraformGoogleConversion) CopyCommonFiles(outputFolder string, genera
 		"converters/google/resources/services/compute/compute_security_policy.go":               "third_party/tgc/services/compute/compute_security_policy.go",
 		"converters/google/resources/services/eventarc/eventarc_utils.go":                       "third_party/terraform/services/eventarc/eventarc_utils.go",
 		"converters/google/resources/services/kms/kms_key_ring_iam.go":                          "third_party/tgc/services/kms/kms_key_ring_iam.go",
+		"converters/google/resources/services/iam/iam_service_account.go":                        "third_party/tgc/services/iam/iam_service_account.go",
 		"converters/google/resources/services/kms/kms_crypto_key_iam.go":                        "third_party/tgc/services/kms/kms_crypto_key_iam.go",
 		"converters/google/resources/services/resourcemanager/project_iam_custom_role.go":       "third_party/tgc/services/resourcemanager/project_iam_custom_role.go",
 		"converters/google/resources/services/resourcemanager/organization_iam_custom_role.go":  "third_party/tgc/services/resourcemanager/organization_iam_custom_role.go",
