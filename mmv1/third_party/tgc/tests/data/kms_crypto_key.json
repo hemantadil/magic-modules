@@ -1,0 +1,51 @@
+[
+{
+"ancestors": [
+"projects/{{.Project.Number}}",
+"organizations/{{.OrgID}}"
+],
+"assetType": "cloudkms.googleapis.com/CryptoKey",
+"name": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/us-central1/keyRings/gg-asset-43537-eb9a/cryptoKeys/gg-asset-43537-eb9a",
+"resource": {
+"data": {
+"createTime": "2025-10-31T20:46:17.80039332Z",
+"destroyScheduledDuration": "2592000s",
+"labels": {
+"example-label": "example-value",
+"goog-terraform-provisioned": "true"
+},
+"name": "projects/{{.Provider.project}}/locations/us-central1/keyRings/gg-asset-43537-eb9a/cryptoKeys/gg-asset-43537-eb9a",
+"purpose": "ASYMMETRIC_SIGN",
+"versionTemplate": {
+"algorithm": "EC_SIGN_P256_SHA256",
+"protectionLevel": "HSM"
+}
+},
+"discoveryDocumentUri": "https://cloudkms.googleapis.com/$discovery/rest",
+"discoveryName": "CryptoKey",
+"location": "us-central1",
+"parent": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/us-central1/keyRings/gg-asset-43537-eb9a",
+"version": "v1"
+},
+"updateTime": "2025-10-31T20:46:17.800393320Z"
+},
+{
+"ancestors": [
+"projects/{{.Project.Number}}",
+"organizations/{{.OrgID}}"
+],
+"assetType": "cloudkms.googleapis.com/KeyRing",
+"name": "//cloudkms.googleapis.com/projects/{{.Provider.project}}/locations/us-central1/keyRings/gg-asset-43537-eb9a",
+"resource": {
+"data": {
+"createTime": "2025-10-31T20:45:59.242702337Z",
+"name": "projects/{{.Provider.project}}/locations/us-central1/keyRings/gg-asset-43537-eb9a"
+},
+"discoveryDocumentUri": "https://cloudkms.googleapis.com/$discovery/rest",
+"discoveryName": "KeyRing",
+"location": "us-central1",
+"version": "v1"
+},
+"updateTime": "2025-10-31T20:45:59.242702337Z"
+}
+]
